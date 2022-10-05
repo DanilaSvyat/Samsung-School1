@@ -10,7 +10,7 @@ public class Main {
         double y = scanner.nextDouble();
 
 
-        String res = x < 2 && y < x && x * x + y * y > 4 && y > 0 ? "YES" : "NO";
+        String res = x > 0 && y > 0 && y < Math.sin(x) && y < 0.5 && x < Math.PI  ? "YES" : "NO";
         System.out.println(res);
     }
 }
