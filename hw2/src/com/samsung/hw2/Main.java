@@ -10,7 +10,7 @@ public class Main {
         double y = scanner.nextDouble();
 
 
-        String res = (y > x * x-2 && y < -x) || (y > x * x - 2 && y < x)  ? "YES" : "NO";
+        String res = x * x + y * y < 1 && y > x || x * x + y * y < 1 && y < x && x < 0 ? "YES" : "NO";
         System.out.println(res);
     }
 }
