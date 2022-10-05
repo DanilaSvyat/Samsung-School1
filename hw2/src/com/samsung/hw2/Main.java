@@ -6,12 +6,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int a = scanner.nextInt();
-        int b = scanner.nextInt();
-        int c = scanner.nextInt();
-        int d = scanner.nextInt();
+        double x = scanner.nextDouble();
+        double y = scanner.nextDouble();
 
-        boolean res = a == -b || a == -c || a == -d || b == -c || b == -d || c == - d;
+
+        String res = x < 2 && y < x && x * x + y * y > 4 && y > 0 ? "YES" : "NO";
         System.out.println(res);
     }
 }
