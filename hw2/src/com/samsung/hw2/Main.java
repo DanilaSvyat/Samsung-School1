@@ -6,11 +6,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner (System.in);
 
-        int a = scanner.nextInt();
-        int b = scanner.nextInt();
-        int c = scanner.nextInt();
+        double a = scanner.nextDouble();
 
-        boolean res = ((a % 2 == 0 && b % 2 == 0 ) || (a % 2 == 0 && c % 2 == 0) || (b % 2 == 0 && c % 2 == 0));
+        boolean res = a >= 3 && a <= 8;
         System.out.println(res);
     }
 }
