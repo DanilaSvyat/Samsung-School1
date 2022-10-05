@@ -6,9 +6,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        double x = scanner.nextDouble();
+        int x = scanner.nextInt();
 
-        boolean res = x < -2 || x > 3 && x < 6 || x > 9;
+        boolean res = x / 100 > 0 && x / 100 < 9 && x % 5 == 0;
         System.out.println(res);
     }
 }
