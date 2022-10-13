@@ -7,14 +7,13 @@ public class task6 {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         int sum = 0;
-        int n = 0;
+        int a = 26;
 
-        while (a >= b){
-            n++;
-            a -= b;
+        while (n >= a){
+            sum += a;
+            a += 2;
         }
-        sum = n;
 
-        System.out.println(sum + " " + a);
+        System.out.println(sum);
     }
 }
