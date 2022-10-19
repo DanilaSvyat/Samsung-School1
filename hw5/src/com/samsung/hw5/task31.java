@@ -19,6 +19,7 @@ public class task31 {
             a++;
             b--;
         }
+
         int c = scanner.nextInt();
         int d = scanner.nextInt();
         for (int i = c-1; i <= d-1; i++) {
