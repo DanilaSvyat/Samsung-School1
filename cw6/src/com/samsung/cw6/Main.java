@@ -9,9 +9,10 @@ public class Main {
         int[] arr1 = {101, 19, 19, 20, -100, 1000};
 
         printArray(arr);
+        System.out.println(printArray1(arr));
         printArray(arr1);
 
-        int res = max(7,10);
+        int res = max(7, 10);
 
         System.out.println(res);
 
@@ -29,14 +30,16 @@ public class Main {
     public static int max(int a, int b) {
         return a > b ? a : b;
     }
-    public static String printArray1(int[] array){
+
+    public static String printArray1(int[] array) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("[ ");
-        for (int i: array) {
+        for (int i : array) {
             stringBuilder.append(i).append(" ");
         }
+        stringBuilder.append("]");
 
-        }
+        return stringBuilder.toString();
     }
 }
 
