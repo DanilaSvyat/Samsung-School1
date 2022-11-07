@@ -9,30 +9,34 @@ public class Fraction {
             System.out.println("Denominator can't be zero. Choose another one.");
             return;
         }
-        this.numerator = numerator;
-        this.denominator = denominator;
+        this.numerator = numerator * (denominator < 0 ? -1 : 1);
+        this.denominator = Math.abs(denominator);
+        normalization();
     }
 
-    public double fractionDeduction(int numerator, int numerator1, int denominator, int denominator1) {
+    @Override
+    public String toString() {
+        return "Fraction{" +
+                "numerator=" + numerator +
+                ", denominator=" + denominator +
+                '}';
+    }
 
-        int generalDenominator = denominator * denominator1;
-        numerator *= denominator1;
-        numerator1 *= denominator;
-        numerator -= numerator1;
-        for (int i = 2; i < numerator; i++) {
-            if (generalDenominator % i == 0 && numerator % i == 0) {
-                generalDenominator /= i;
-                numerator /= i;
-                i--;
+    private int gcd(int numerator, int denominator) {
+        while (numerator != 0 && denominator != 0) {
+            if (numerator > denominator) {
+                numerator %= denominator;
+            } else {
+                denominator %= numerator;
             }
         }
-        return (numerator / generalDenominator);
+        return numerator + denominator;
     }
 
-    public double fractionMultiplication(int numerator, int numerator1, int denominator, int denominator1) {
-        numerator *= numerator1;
-        denominator *= denominator1;
-        return (numerator / denominator);
+    private void normalization() {
+        int n = gcd(Math.abs(numerator), Math.abs(denominator));
+        numerator /= n;
+        denominator /= n;
     }
 
     public static Fraction fractionDivision(Fraction fraction1, Fraction fraction2) {
@@ -43,11 +47,15 @@ public class Fraction {
         ));
     }
 
-    @Override
-    public String toString() {
-        return "Fraction{" +
-                "numerator=" + numerator +
-                ", denominator=" + denominator +
-                '}';
+    public Fraction fractionMultiplication(Fraction fraction1, Fraction fraction2) {
+        return (new Fraction(
+                fraction1.numerator * fraction2.numerator,
+                fraction1.denominator * fraction2.denominator
+        ));
+    }
+
+    public Fraction fractionDeduction(Fraction fraction1, Fraction fraction2) {
+
+        return (new Fraction(fraction1.numerator * fraction2.denominator - fraction2.numerator * fraction1.denominator, fraction1.denominator * fraction2.denominator));
     }
 }
