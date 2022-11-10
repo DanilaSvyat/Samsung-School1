@@ -29,18 +29,22 @@ public class Animals {
         if (visitCount < datesOfVisit.length) {
             datesOfVisit[visitCount] = dateOfVisit;
             visitCount++;
-            return datesOfVisit;
         } else {
             String[] datesOfVisit1 = new String[datesOfVisit.length * 2];
             for (int i = 0; i < datesOfVisit.length; i++) {
-                datesOfVisit1[i] = dateOfVisit;
+                datesOfVisit1[i] = datesOfVisit[i];
             }
+            datesOfVisit1[visitCount] = dateOfVisit;
             visitCount++;
-            return datesOfVisit1;
+            datesOfVisit = datesOfVisit1;
         }
+        return datesOfVisit;
     }
 
     public void visitsList() {
-        System.out.println(Arrays.toString(datesOfVisit));
+        for (String s : datesOfVisit) {
+            if (s != null)
+                System.out.print(s + " ");
+        }
     }
 }
