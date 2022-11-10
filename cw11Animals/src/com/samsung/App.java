@@ -13,6 +13,10 @@ public class App {
     barbos.printInfo();
 
     barsik.newVisit("9.11.2022");
+    barsik.newVisit("10.11.2022");
+    barsik.newVisit("11.11.2022");
+    barsik.newVisit("12.11.2022");
+    barsik.newVisit("13.11.2022");
         barsik.visitsList();
     }
 }

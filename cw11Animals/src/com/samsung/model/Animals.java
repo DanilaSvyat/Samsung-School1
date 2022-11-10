@@ -1,6 +1,7 @@
 package com.samsung.model;
 
 import java.util.Arrays;
+import java.util.Date;
 
 public class Animals {
 
@@ -25,10 +26,18 @@ public class Animals {
     }
 
     public String[] newVisit(String dateOfVisit) {
-        if (visitCount < dateOfVisit.length() && dateOfVisit[visitCount] == null)
-        this.datesOfVisit[visitCount] = dateOfVisit;
-
-        return this.datesOfVisit;
+        if (visitCount < datesOfVisit.length) {
+            datesOfVisit[visitCount] = dateOfVisit;
+            visitCount++;
+            return datesOfVisit;
+        } else {
+            String[] datesOfVisit1 = new String[datesOfVisit.length * 2];
+            for (int i = 0; i < datesOfVisit.length; i++) {
+                datesOfVisit1[i] = dateOfVisit;
+            }
+            visitCount++;
+            return datesOfVisit1;
+        }
     }
 
     public void visitsList() {
