@@ -23,7 +23,31 @@ public class Warrior extends Unit {
         return builder.toString();
     }
 
+    @Override
+    public void sayHello() {
+        System.out.println("Привет, я воин!");
+    }
+
+
     public int getArmor() {
         return armor;
+    }
+
+    @Override
+    public Unit attack(Unit unit) {
+
+        unit.getDmg(K_DMG);
+
+        return unit;
+    }
+
+    @Override
+    public void getDmg(int dmg) {
+        if (this.armor > 0) {
+            this.armor -= 1;
+            this.hp -= dmg / 2;
+        }else {
+            this.hp -=dmg;
+        }
     }
 }

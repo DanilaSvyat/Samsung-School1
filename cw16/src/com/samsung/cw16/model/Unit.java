@@ -1,6 +1,7 @@
 package com.samsung.cw16.model;
 
-public class Unit {
+public abstract class Unit implements Battle{
+    public final static int K_DMG = 10;
     private String name;
     protected int hp;
 
@@ -24,4 +25,5 @@ public class Unit {
                 ", hp=" + hp +
                 '}';
     }
+    public abstract void sayHello();
 }
