@@ -4,9 +4,11 @@ import java.util.Arrays;
 
 public class University implements Printer {
     private final String address = "Москва, Улица ленина.";
-    static int i;
+    static int studentCount;
+    static int teacherCount;
     private String[] studentsList;
     private String[] teachersList;
+
 
 
 
@@ -18,14 +20,29 @@ public class University implements Printer {
             studentsList[1] = student1.printInfoToConsole();
             teachersList[0] = teacher1.printInfoToConsole();
     }
+    public University(){
+        studentsList = new String[1000];
+        teachersList = new String[50];
+    }
+    public String[] newStudent(Student student){
+        studentsList[studentCount] = student.printInfoToConsole();
+        studentCount++;
+        return studentsList;
+    }
+    public String[] newTeacher(Teacher teacher){
+        studentsList[teacherCount] = teacher.printInfoToConsole();
+        teacherCount++;
+        return studentsList;
+    }
 
-    public University(Teacher teacher) {
+
+    /*public University(Teacher teacher) {
         studentsList = new String[1000];
         while (i < 1001) {
             studentsList[1] = teacher.printInfoToConsole();
         }
         i++;
-    }
+    }*/
 
     @Override
     public String printInfoToConsole() {
