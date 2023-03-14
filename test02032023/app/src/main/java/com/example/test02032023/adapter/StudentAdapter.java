@@ -1,5 +1,6 @@
 package com.example.test02032023.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,14 +19,14 @@ public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private final List<Student> studentList;
     private final LayoutInflater inflater;
 
-    public StudentAdapter(List<Student> studentList, LayoutInflater inflater) {
+    public StudentAdapter(List<Student> studentList, Context context) {
         this.studentList = studentList;
-        this.inflater = inflater;
+        this.inflater = LayoutInflater.from(context);
     }
 
     private class ViewHolder extends RecyclerView.ViewHolder{
 
-        final TextView tvId, tvName, tvAge, tvPhone, tvEmail;
+        private TextView tvId, tvName, tvAge, tvPhone, tvEmail;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

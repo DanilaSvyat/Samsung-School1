@@ -20,7 +20,7 @@ public class StudentDbOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(
                 "CREATE TABLE IF NOT EXISTS " + StudentReaderContract.StudentEntry.TABLE_NAME + " (" +
-                        StudentReaderContract.StudentEntry.COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        StudentReaderContract.StudentEntry.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         StudentReaderContract.StudentEntry.COLUMN_NAME + " TEXT NOT NULL, " +
                         StudentReaderContract.StudentEntry.COLUMN_AGE + " INTEGER NOT NULL, " +
                         StudentReaderContract.StudentEntry.COLUMN_PHONE + " TEXT NOT NULL, " +

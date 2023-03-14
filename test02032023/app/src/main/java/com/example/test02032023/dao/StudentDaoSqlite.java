@@ -51,7 +51,7 @@ public class StudentDaoSqlite implements StudentDao {
 
     @Override
     public List<Student> findAll() {
-       SQLiteDatabase sqLiteDatabase = openHelper.getReadableDatabase();
+        SQLiteDatabase sqLiteDatabase = openHelper.getReadableDatabase();
 
         Cursor cursor = sqLiteDatabase.query(
                 StudentReaderContract.StudentEntry.TABLE_NAME,
@@ -66,23 +66,29 @@ public class StudentDaoSqlite implements StudentDao {
         List<Student> studentList = new ArrayList<>();
 
         if (cursor.moveToFirst()){
-         int id = cursor.getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_ID);
-         int name = cursor.getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_NAME);
-         int age = cursor.getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_AGE);
-         int phone = cursor.getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_PHONE);
-         int email = cursor.getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_EMAIL);
+            int id = cursor.
+                    getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_ID);
+            int name = cursor.
+                    getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_NAME);
+            int age = cursor.
+                    getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_AGE);
+            int phone = cursor.
+                    getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_PHONE);
+            int email = cursor.
+                    getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_EMAIL);
 
-         do {
-             Student student = new Student(
-                     cursor.getLong(id),
-                     cursor.getString(name),
-                     cursor.getInt(age),
-                     cursor.getString(phone),
-                     cursor.getString(email)
-             );
-             studentList.add(student);
-         }while (cursor.moveToNext());
 
+            do {
+                Student student = new Student(
+                        cursor.getLong(id),
+                        cursor.getString(name),
+                        cursor.getInt(age),
+                        cursor.getString(phone),
+                        cursor.getString(email)
+                );
+
+                studentList.add(student);
+            }while (cursor.moveToNext());
 
         }
 
@@ -97,35 +103,38 @@ public class StudentDaoSqlite implements StudentDao {
 
         Cursor cursor = sqLiteDatabase.query(
                 StudentReaderContract.StudentEntry.TABLE_NAME,
-          null,
-          StudentReaderContract.StudentEntry.COLUMN_ID + " = ?",
-          new String[] {String.valueOf(id)},
-          null,
-          null,
-          null
+                null,
+                StudentReaderContract.StudentEntry.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(id)},
+                null,
+                null,
+                null
         );
 
-        cursor.moveToFirst();
+        if (cursor.moveToFirst()) {
 
-        int columnIndexId = cursor
-                .getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_ID);
-        int columnIndexName = cursor
-                .getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_NAME);
-        int columnIndexAge = cursor
-                .getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_AGE);
-        int columnIndexPhone = cursor
-                .getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_PHONE);
-        int columnIndexEmail = cursor
-                .getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_EMAIL);
-        Student student = new Student(
-                cursor.getInt(columnIndexId),
-                cursor.getString(columnIndexName),
-                cursor.getInt(columnIndexAge),
-                cursor.getString(columnIndexPhone),
-                cursor.getString(columnIndexEmail)
-        );
+            int columnIndexId = cursor
+                    .getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_ID);
+            int columnIndexName = cursor
+                    .getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_NAME);
+            int columnIndexAge = cursor
+                    .getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_AGE);
+            int columnIndexPhone = cursor
+                    .getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_PHONE);
+            int columnIndexEmail = cursor
+                    .getColumnIndex(StudentReaderContract.StudentEntry.COLUMN_EMAIL);
+            Student student = new Student(
+                    cursor.getInt(columnIndexId),
+                    cursor.getString(columnIndexName),
+                    cursor.getInt(columnIndexAge),
+                    cursor.getString(columnIndexPhone),
+                    cursor.getString(columnIndexEmail)
+            );
+            cursor.close();
+            sqLiteDatabase.close();
+            return student;
 
-        return student;
+        } return null;
     }
 
     @Override
@@ -152,8 +161,8 @@ public class StudentDaoSqlite implements StudentDao {
         long update = sqLiteDatabase.update(
                 StudentReaderContract.StudentEntry.TABLE_NAME,
                 contentValues,
-                id+"",
-                new String[] {String.valueOf(id)}
+                StudentReaderContract.StudentEntry.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(id)}
         );
         sqLiteDatabase.close();
 
@@ -168,9 +177,9 @@ public class StudentDaoSqlite implements StudentDao {
 
         long delete = sqLiteDatabase.delete(
                 StudentReaderContract.StudentEntry.TABLE_NAME,
-                id+"",
-                new String[] {String.valueOf(id)}
-                );
+                StudentReaderContract.StudentEntry.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(id)}
+        );
 
         sqLiteDatabase.close();
 
